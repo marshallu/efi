@@ -1,0 +1,34 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	<div class="bg-gray-100 py-12 lg:py-16">
+		<div class="w-full mx-auto xl:container px-6">
+			<h1 class="text-3xl lg:text-4xl text-gray-700 uppercase font-semibold font-sans">{{ title }}</h1>
+			{% if archive.description %}
+				<div class="mt-4 text-gray-600 text-lg">{{ archive.description }}</div>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="w-full mx-auto xl:container px-6 py-12 lg:py-16">
+		{% if posts %}
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
+				{% for post in posts %}
+					{% include 'partials/tease-post.twig' %}
+				{% endfor %}
+			</div>
+
+			{% if posts.pagination %}
+				{% include 'partials/pagination.twig' with {
+					pagination: posts.pagination({
+						show_all: false,
+						mid_size: 3,
+						end_size: 2
+					})
+				} %}
+			{% endif %}
+		{% else %}
+			<p class="text-gray-600 text-center py-12">No posts found.</p>
+		{% endif %}
+	</div>
+{% endblock %}

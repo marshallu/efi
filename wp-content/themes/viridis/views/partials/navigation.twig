@@ -1,0 +1,51 @@
+{# Mobile Navigation Toggle #}
+<div class="xl:hidden fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-sm">
+	<div class="w-full mx-auto px-6 flex items-center justify-between py-4">
+		<a href="{{ site.url }}">
+			<img src="{{ site.theme.link }}/assets/images/edwards-logo.png" alt="{{ site.name }}" class="h-8">
+		</a>
+
+		<button @click="mobileMenuOpen = true" aria-label="Open mobile menu" class="rounded-lg bg-yellow px-4 py-2 flex items-center space-x-2">
+			<span class="text-white uppercase font-bold text-lg">Menu</span>
+			<svg class="fill-white h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path></svg>
+		</button>
+	</div>
+</div>
+
+{# Mobile Navigation Overlay #}
+<div
+	x-show="mobileMenuOpen"
+	x-cloak
+	x-transition:enter="transition ease-out duration-300"
+	x-transition:enter-start="opacity-0"
+	x-transition:enter-end="opacity-100"
+	x-transition:leave="transition ease-in duration-200"
+	x-transition:leave-start="opacity-100"
+	x-transition:leave-end="opacity-0"
+	class="fixed inset-0 z-50 bg-gray-900/95 xl:hidden"
+>
+	<div class="flex flex-col h-full p-6">
+		<div class="flex justify-between items-center mb-8">
+			<a href="{{ site.url }}">
+				<img src="{{ site.theme.link }}/assets/images/edwards-logo.png" alt="{{ site.name }}" class="h-8">
+			</a>
+			<button @click="mobileMenuOpen = false" aria-label="Close mobile menu" class="text-white">
+				<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+				</svg>
+			</button>
+		</div>
+
+		<nav class="flex-1 flex flex-col space-y-4">
+			{% if menu %}
+				{% for item in menu.items %}
+					<a href="{{ item.url }}" class="text-white text-2xl font-bold uppercase py-2 border-b border-gray-700">
+						{{ item.title }}
+					</a>
+				{% endfor %}
+			{% endif %}
+
+			<a href="/apply-now/" class="button button--primary text-center mt-4">Apply Now</a>
+		</nav>
+	</div>
+</div>

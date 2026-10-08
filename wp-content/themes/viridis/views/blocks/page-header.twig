@@ -1,0 +1,128 @@
+{#
+/**
+ * Page Header Block
+ *
+ * @package viridis
+ */
+#}
+
+<div class="viridis-hero-block">
+	{% if fields.type == 'image' or fields.type == 'video' %}
+		<div class="relative bg-no-repeat bg-cover bg-gray-500 flex items-center min-h-[30rem] lg:min-h-144">
+			{# Desktop Navigation #}
+			<nav class="hidden xl:block bg-transparent absolute top-0 left-0 right-0 z-50">
+				<div class="w-full mx-auto xl:container px-6 flex items-center justify-between py-6">
+					<div class="flex">
+						<a href="{{ site.url }}">
+							<img src="{{ site.theme.link }}/assets/images/efi_white_the_looong_way.png" alt="{{ site.name }}" class="h-10 md:h-12 lg:h-14">
+						</a>
+					</div>
+
+					<div class="flex space-x-4 items-center antialiased">
+						{% if menu %}
+							{% for item in menu.items %}
+								<a href="{{ item.url }}" class="noto-sans-body button-nav-edwards text-lg font-bold px-2 py-2 rounded-lg transition-all duration-150 ease-in-out text-white uppercase hover:text-white hover:decoration-2 hover:underline-offset-2">
+									{{ item.title }}
+								</a>
+							{% endfor %}
+						{% endif %}
+
+						<div>
+							<a href="/apply-now/" class="button button--primary noto-sans-body">Apply Now</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+
+			{% if fields.type == 'video' and fields.video_file %}
+				<video
+					autoplay
+					muted
+					loop
+					playsinline
+					{% if fields.video_poster_image %}poster="{{ fields.video_poster_image.url }}"{% endif %}
+					class="absolute h-full w-full object-cover object-center"
+				>
+					<source src="{{ fields.video_file.url }}" type="video/mp4">
+				</video>
+			{% elseif fields.background_image %}
+				<img
+					loading="eager"
+					decoding="async"
+					src="{{ fields.background_image.url }}"
+					alt="{{ fields.background_image.alt }}"
+					class="absolute h-full w-full object-cover object-bottom"
+				/>
+			{% endif %}
+
+			<div class="absolute inset-0 w-full h-full bg-gradient-to-t {{ fields.dark_overlay ? 'from-gray-900/60 via-gray-900/40 to-gray-900/60' : 'from-gray-900/60 via-gray-900/40 to-gray-900/20' }}"></div>
+
+			<div class="relative w-full h-full mx-auto xl:container px-6 py-12 lg:py-24 mt-16">
+				<div class="max-w-2xl">
+					{% if post.title %}
+						<h1 class="text-white text-4xl lg:text-5xl font-semibold">{{ post.title }}</h1>
+					{% endif %}
+
+					{% if fields.subheading %}
+						<div class="w-full font-semibold text-white text-xl mt-4 lg:text-2xl">
+							{{ fields.subheading }}
+						</div>
+					{% endif %}
+
+					{% if fields.page_header_buttons %}
+						<div class="mt-6 flex flex-col gap-2 lg:gap-6 lg:flex-row">
+							{% for button in fields.page_header_buttons %}
+								{% if button.link %}
+									<a
+										href="{{ button.link.url }}"
+										class="button {{ loop.first ? 'button--primary' : 'button--secondary' }}"
+										{% if button.link.target %}target="{{ button.link.target }}"{% endif %}
+									>
+										<span>{{ button.link.title }}</span>
+									</a>
+								{% endif %}
+							{% endfor %}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	{% else %}
+		{# Desktop Navigation for non-hero pages #}
+		<nav class="hidden xl:block bg-gray-900">
+			<div class="w-full mx-auto xl:container px-6 flex items-center justify-between py-6">
+				<div class="flex">
+					<a href="{{ site.url }}">
+						<img src="{{ site.theme.link }}/assets/images/edwards-logo.png" alt="{{ site.name }}" class="h-10 md:h-12 lg:h-14">
+					</a>
+				</div>
+
+				<div class="flex space-x-4 items-center antialiased">
+					{% if menu %}
+						{% for item in menu.items %}
+							<a href="{{ item.url }}" class="noto-sans-body button-nav-edwards text-lg font-bold px-2 py-2 rounded-lg transition-all duration-150 ease-in-out text-white uppercase hover:text-white hover:decoration-2 hover:underline-offset-2">
+								{{ item.title }}
+							</a>
+						{% endfor %}
+					{% endif %}
+
+					<div>
+						<a href="/apply-now/" class="button button--primary noto-sans-body">Apply Now</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<div class="bg-gray-100 py-12 lg:py-16 mt-16 xl:mt-0">
+			<div class="w-full mx-auto xl:container px-6">
+				{% if post.title %}
+					<h1 class="text-3xl lg:text-4xl text-gray-700 uppercase font-semibold font-sans entry-title">{{ post.title }}</h1>
+				{% endif %}
+
+				{% if fields.subheading %}
+					<div class="text-gray-600 text-lg mt-2">{{ fields.subheading }}</div>
+				{% endif %}
+			</div>
+		</div>
+	{% endif %}
+</div>

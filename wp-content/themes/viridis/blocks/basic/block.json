@@ -1,0 +1,19 @@
+{
+    "apiVersion": 2,
+    "name": "acf/basic",
+    "version": "1.0.0",
+    "title": "Basic",
+    "category": "viridis",
+    "icon": "editor-justify",
+    "textdomain": "viridis",
+    "acf": {
+        "mode": "edit",
+        "renderCallback": "viridis_basic_block",
+		"validate": "false"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "customClassName": true
+    }
+}

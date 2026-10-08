@@ -1,0 +1,65 @@
+<!doctype html>
+<html {{ site.language_attributes }} class="antialiased scroll-smooth">
+	<head>
+		<link rel="preconnect" href="https://www.googletagmanager.com/">
+		<link rel="preconnect" href="https://cdn.jsdelivr.net/">
+
+		<meta charset="{{ site.charset }}">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+		<link rel="preconnect" href="https://fonts.bunny.net">
+		<link href="https://fonts.bunny.net/css?family=dm-serif-display:400,400i|noto-sans:400,500,700,800" rel="stylesheet" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+		{% do action('get_header') %}
+		{{ function('wp_head') }}
+
+		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	</head>
+
+	<body
+		class="{{ body_class }} font-sans"
+		x-data="{
+			mobileMenuOpen: false,
+			showSearch: false,
+		}"
+		:class="{ 'overflow-hidden h-full' : mobileMenuOpen }"
+	>
+		{{ function('wp_body_open') }}
+
+		<a href="#content" class="absolute w-px h-px overflow-hidden top-auto left-[-999px] z-[-100]
+			focus:text-center focus:bg-gray-100 focus:text-gray-900 focus:font-semibold focus:uppercase focus:inset-auto focus:p-4 focus:overflow-auto focus:ring-4 focus:ring-green
+			focus:rounded-lg focus:mt-6 focus:ml-6 focus:z-999"
+		>
+			Skip to main content
+		</a>
+
+		<div id="page" class="site min-h-screen flex flex-col" :class="{ 'overflow-hidden h-full' : mobileMenuOpen }">
+			{% block header %}
+				{% include 'partials/navigation.twig' %}
+			{% endblock %}
+
+			<main id="content" role="main" class="site-content flex-1 bg-white">
+				{% block content %}
+					Sorry, no content
+				{% endblock %}
+			</main>
+
+			<footer id="footer">
+				{% block footer %}
+					{% include 'partials/footer.twig' %}
+				{% endblock %}
+			</footer>
+		</div>
+
+		{{ function('wp_footer') }}
+		{% do action('get_footer') %}
+	</body>
+</html>

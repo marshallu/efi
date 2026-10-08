@@ -1,0 +1,19 @@
+{
+    "apiVersion": 2,
+    "name": "acf/billboard",
+    "version": "1.0.0",
+    "title": "Billboard",
+    "category": "viridis",
+    "icon": "editor-kitchensink",
+    "textdomain": "viridis",
+    "acf": {
+        "mode": "edit",
+        "renderCallback": "viridis_billboard_block",
+		"validate": "false"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "customClassName": true
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "apiVersion": 2,
+    "name": "acf/facts-and-stats",
+    "version": "1.0.0",
+    "title": "Facts And Stats",
+    "category": "viridis",
+    "icon": "megaphone",
+    "textdomain": "viridis",
+    "acf": {
+        "mode": "edit",
+        "renderCallback": "viridis_facts_and_stats_block",
+		"validate": "false"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "customClassName": true
+    }
+}

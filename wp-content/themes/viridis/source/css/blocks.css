@@ -1,0 +1,179 @@
+.viridis-block {
+	.viridis-block__preheading,
+	.viridis-block__heading {
+		@apply max-w-3xl;
+		font-family: "DM Serif Display", serif;
+  			font-weight: 400;
+  			font-style: normal;
+	}
+
+	&.viridis-block--center {
+		.viridis-block__preheading {
+			@apply max-w-full text-center mx-auto;
+		}
+		.viridis-block__heading {
+			@apply max-w-full lg:max-w-[30ch] mx-auto text-center;
+			font-family: "DM Serif Display", serif;
+  			font-weight: 400;
+  			font-style: normal;
+		}
+	}
+
+	&.viridis-block--green {
+		@apply bg-green text-gray-900;
+
+		.viridis-block__preheading {
+			@apply text-gray-900;
+		}
+
+		.viridis-block__heading  {
+			@apply text-white;
+		}
+
+		.viridis-block__links {
+			@apply bg-green text-white hover:bg-green hover:text-white;
+		}
+
+		.viridis-block__content {
+			@apply text-white;
+		}
+	}
+
+	&.viridis-block--white {
+		@apply bg-white text-gray-700;
+
+		.viridis-block__preheading {
+			@apply text-gray-500;
+		}
+
+		.viridis-block__heading  {
+			@apply text-black;
+		}
+
+		.viridis-block__links {
+			@apply bg-white text-gray-600 hover:bg-white hover:text-green;
+		}
+
+		.viridis-block__content {
+			@apply text-green;
+		}
+	}
+
+	&.viridis-block--black {
+		@apply bg-gray-900 text-white;
+
+		.viridis-block__preheading {
+			@apply text-white;
+		}
+
+		.viridis-block__heading  {
+			@apply text-white;
+		}
+
+		.viridis-block__links {
+			@apply bg-gray-900 text-gray-100 hover:bg-gray-900 hover:text-green-bright;
+		}
+
+		.viridis-block__content {
+			@apply text-white;
+		}
+	}
+
+	&.viridis-block--gray {
+		@apply bg-gray-100 text-gray-900;
+
+		.viridis-block__preheading {
+			@apply text-gray-900;
+		}
+
+		.viridis-block__heading  {
+			@apply text-gray-900;
+		}
+	}
+
+	&.viridis-block--image {
+		@apply bg-green text-gray-900;
+
+		.viridis-block__preheading {
+			@apply text-white;
+		}
+
+		.viridis-block__heading  {
+			@apply text-white;
+		}
+	}
+}
+
+.rich-text {
+	@apply max-w-none text-base/7 lg:text-lg/8;
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "DM Serif Display", serif;
+		font-weight: 400;
+		font-style: normal;
+		@apply mt-8 mb-4 first:mt-0;
+	}
+
+	h1 { @apply text-4xl lg:text-5xl; }
+	h2 { @apply text-3xl lg:text-4xl; }
+	h3 { @apply text-2xl lg:text-3xl; }
+	h4 { @apply text-xl lg:text-2xl; }
+	h5 { @apply text-lg lg:text-xl; }
+	h6 { @apply text-base lg:text-lg font-sans font-semibold; }
+
+	p {
+		@apply my-5 first:mt-0 last:mb-0;
+	}
+
+	a {
+		@apply underline underline-offset-2 decoration-1 hover:opacity-75 transition-opacity duration-150;
+	}
+
+	strong { @apply font-semibold; }
+	em { @apply italic; }
+
+	ul {
+		@apply list-disc pl-6 my-5 space-y-1.5 first:mt-0 last:mb-0;
+	}
+
+	ol {
+		@apply list-decimal pl-6 my-5 space-y-1.5 first:mt-0 last:mb-0;
+	}
+
+	li > ul,
+	li > ol {
+		@apply my-2;
+	}
+
+	blockquote {
+		@apply border-l-4 border-current pl-5 my-6 opacity-80 italic;
+	}
+
+	hr {
+		@apply border-current opacity-20 my-8;
+	}
+
+	code {
+		@apply font-mono text-sm bg-black/10 rounded px-1 py-0.5;
+	}
+
+	pre {
+		@apply font-mono text-sm bg-black/10 rounded-lg p-4 my-6 overflow-x-auto;
+
+		code {
+			@apply bg-transparent p-0;
+		}
+	}
+
+	table {
+		@apply w-full text-left border-collapse my-6 text-sm;
+
+		th {
+			@apply font-semibold border-b-2 border-current pb-2 pr-4;
+		}
+
+		td {
+			@apply border-b border-current/20 py-2 pr-4;
+		}
+	}
+}

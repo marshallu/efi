@@ -1,0 +1,41 @@
+
+# Site configuration and secrets
+.env
+.env.*
+!.env.example
+.htaccess
+
+# -----------------------------------------------------------------------------
+# wp-content — only custom themes and plugins are tracked
+# -----------------------------------------------------------------------------
+/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/upgrade-temp-backup/
+/wp-content/cache/
+/wp-content/backup*/
+/wp-content/languages/
+/wp-content/debug.log
+/wp-content/advanced-cache.php
+/wp-content/object-cache.php
+/wp-content/db.php
+/wp-content/wflogs/
+
+
+# -----------------------------------------------------------------------------
+# Dependencies and build tooling
+# -----------------------------------------------------------------------------
+node_modules/
+vendor/
+.phpunit.result.cache
+
+# -----------------------------------------------------------------------------
+# Logs, OS, and editor files
+# -----------------------------------------------------------------------------
+*.log
+*.sql
+*.sql.gz
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

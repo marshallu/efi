@@ -1,0 +1,19 @@
+{
+    "apiVersion": 2,
+    "name": "acf/iframe-embed",
+    "version": "1.0.0",
+    "title": "Iframe Embed",
+    "category": "viridis",
+    "icon": "embed-generic",
+    "textdomain": "viridis",
+    "acf": {
+        "mode": "edit",
+        "renderCallback": "viridis_iframe_embed_block",
+		"validate": "false"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "customClassName": true
+    }
+}

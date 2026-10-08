@@ -1,0 +1,37 @@
+{#
+/**
+ * Billboard Block
+ *
+ * @package viridis
+ */
+#}
+
+<div class="viridis-block viridis-block--image viridis-billboard-block viridis-block--center relative">
+	{% if fields.background_image %}
+		<img
+			src="{{ fields.background_image.url }}"
+			alt="{{ fields.background_image.alt }}"
+			class="absolute h-full w-full object-cover object-center {{ fields.color_overlay == 'green' ? 'mix-blend-overlay' : '' }}"
+		/>
+	{% endif %}
+
+	<div class="relative py-12 lg:py-24">
+		<div class="absolute inset-0 h-full w-full {{ fields.color_overlay == 'green' ? 'bg-green/60' : 'bg-gray-900/60' }}"></div>
+
+		<div class="z-5 relative w-full mx-auto xl:container px-6">
+			<div class="text-center">
+				{% include 'components/block-heading.twig' with {
+					preheading: fields.preheading,
+					heading: fields.heading,
+					subheading: fields.subheading
+				} %}
+
+				{% include 'components/buttons.twig' with {
+					buttons: fields.buttons,
+					button_class_primary: 'button--primary-dark',
+					button_class_secondary: 'button--secondary-dark'
+				} %}
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,58 @@
+{#
+/**
+ * News And Stories Block
+ *
+ * @package viridis
+ */
+#}
+
+<div class="viridis-block viridis-block--gray viridis-news-stories-block viridis-block--center">
+	<div class="w-full mx-auto xl:container px-6 py-12 lg:py-24">
+		{% include 'components/block-heading.twig' with {
+			preheading: fields.preheading,
+			heading: fields.heading,
+			subheading: fields.subheading
+		} %}
+
+		<div
+			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-16 mt-8"
+			x-data="{ stories: [] }"
+			x-init="fetch('https://news.marshallhealth.org/wp-json/wp/v2/posts?per_page={{ fields.number_of_entries|default(3) }}').then(response => response.json()).then(data => stories = data)"
+		>
+			<template x-for="story in stories" :key="story.id">
+				<a
+					:href="story.link"
+					class="group rounded-xl bg-white shadow-xs hover:shadow-lg transition-all ease-linear duration-150 flex flex-col h-full hover:scale-[1.01] hover:bg-gray-800"
+				>
+					<div class="w-full aspect-4/3">
+						<img
+							:src="story.spec_featured_image ? story.spec_featured_image : 'https://news.marshallhealth.org/wp-content/uploads/2024/11/Front-of-Med-Center-min-scaled.jpg'"
+							:alt="story.title.rendered"
+							class="aspect-4/3 w-full object-cover object-center rounded-t-xl"
+						/>
+					</div>
+
+					<div class="flex-1 px-6 py-4 transition-all ease-linear duration-150 rounded-b-xl">
+						<div class="font-black text-xl text-green transition-all ease-linear duration-150 group-hover:text-green-bright" x-text="story.title.rendered"></div>
+						<div
+							class="text-sm text-gray-500 group-hover:text-gray-100 mt-4 font-semibold"
+							x-text="new Date(story.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })"
+						></div>
+					</div>
+				</a>
+			</template>
+		</div>
+
+		{% if fields.link %}
+			<div class="mt-8 text-center">
+				<a
+					href="{{ fields.link.url }}"
+					class="button button--primary"
+					{% if fields.link.target %}target="{{ fields.link.target }}"{% endif %}
+				>
+					<span>{{ fields.link.title }}</span>
+				</a>
+			</div>
+		{% endif %}
+	</div>
+</div>

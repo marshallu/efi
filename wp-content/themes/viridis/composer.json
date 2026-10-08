@@ -1,0 +1,39 @@
+{
+  "name": "efi/viridis",
+  "description": "Viridis theme built with Timber",
+  "type":"wordpress-theme",
+  "license": "MIT",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "timber/timber": "^2.1"
+  },
+  "require-dev": {
+	"squizlabs/php_codesniffer": "@stable",
+    "wp-coding-standards/wpcs": "^3.1",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+    "php-stubs/acf-pro-stubs": "^6.0",
+	"mccomaschris/parkour": "^1.1"
+  },
+  "config": {
+    "allow-plugins": {
+      "roots/wordpress-core-installer": true,
+      "composer/installers": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "autoload": {
+	"classmap": [
+		"src/"
+	]
+  },
+  "scripts": {
+	"format": "phpcbf  --extensions=php --standard=phpcs.xml.dist --report-summary --report-source",
+	"lint": "phpcs --extensions=php --standard=phpcs.xml.dist",
+	"twig-lint": "find views -name '*.twig' -exec php -l {} \\;"
+  }
+}

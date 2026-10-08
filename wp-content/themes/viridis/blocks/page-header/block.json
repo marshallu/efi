@@ -1,0 +1,19 @@
+{
+    "apiVersion": 2,
+    "name": "acf/page-header",
+    "version": "1.0.0",
+    "title": "Page Header",
+    "category": "viridis",
+    "icon": "tagcloud",
+    "textdomain": "viridis",
+    "acf": {
+        "mode": "edit",
+        "renderCallback": "viridis_page_header_block",
+		"validate": "false"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "customClassName": true
+    }
+}

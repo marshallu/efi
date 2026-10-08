@@ -1,0 +1,46 @@
+{
+    "key": "group_block_iframe_embed",
+    "title": "Block: iFrame Embed",
+    "fields": [
+        {
+            "key": "field_iframe_embed",
+            "label": "iFrame Embed",
+            "name": "iframe_embed",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Paste your iframe embed code here",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 4,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/iframe-embed"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1770316638
+}

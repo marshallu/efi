@@ -1,0 +1,15 @@
+{% if buttons %}
+	<div class="{{ class|default('mt-8 flex flex-col gap-2 lg:gap-6 lg:flex-row items-center justify-center') }}">
+		{% for button in buttons %}
+			{% if button.link %}
+				<a
+					href="{{ button.link.url }}"
+					class="button {{ loop.first ? button_class_primary|default('button--primary') : button_class_secondary|default('button--secondary') }}"
+					{% if button.link.target %}target="{{ button.link.target }}"{% endif %}
+				>
+					<span>{{ button.link.title }}</span>
+				</a>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endif %}

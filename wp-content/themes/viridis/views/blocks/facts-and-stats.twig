@@ -1,0 +1,47 @@
+{#
+/**
+ * Facts And Stats Block
+ *
+ * @package viridis
+ */
+#}
+
+{% set background = fields.background_color|default('white') %}
+{% set block_class = 'viridis-block--' ~ background %}
+
+<div class="viridis-block {{ block_class }} viridis-facts-and-stats-block viridis-block--center">
+	<div class="w-full mx-auto xl:container py-12 lg:py-24 px-6">
+		<div class="flex flex-col justify-center text-center">
+			{% include 'components/block-heading.twig' with {
+				preheading: fields.preheading,
+				heading: fields.heading,
+				subheading: fields.subheading
+			} %}
+		</div>
+
+		{% if fields.items %}
+			<div
+				class="mt-8"
+				data-flickity='{
+					"adaptiveHeight" : false,
+					"cellAlign" : "left",
+					"pageDots" : false,
+					"wrapAround" : false
+				}'
+			>
+				{% for item in fields.items %}
+					<div class="viridis-block__content pl-6 lg:mr-24 lg:pl-24 w-full lg:min-w-min lg:max-w-[27%]">
+						<div class="text-center text-5xl lg:text-7xl font-black">{{ item.number }}</div>
+						<div class="text-center font-sans text-xl font-bold uppercase mt-3">{{ item.caption }}</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+
+		{% include 'components/buttons.twig' with {
+			buttons: fields.buttons,
+			button_class_primary: background in ['white', 'gray'] ? 'button--primary' : 'button--primary-dark',
+			button_class_secondary: background in ['white', 'gray'] ? 'button--secondary' : 'button--secondary-dark'
+		} %}
+	</div>
+</div>

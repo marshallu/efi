@@ -1,0 +1,7 @@
+{% extends 'layouts/base.twig' %}
+
+{% block content %}
+	<article class="post-type-{{ post.type }}" id="post-{{ post.id }}">
+		{{ post.content }}
+	</article>
+{% endblock %}

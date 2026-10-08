@@ -1,0 +1,19 @@
+{
+    "apiVersion": 2,
+    "name": "acf/rich-text",
+    "version": "1.0.0",
+    "title": "Rich Text",
+    "category": "viridis",
+    "icon": "editor-alignleft",
+    "textdomain": "viridis",
+    "acf": {
+        "mode": "edit",
+        "renderCallback": "viridis_rich_text_block",
+        "validate": "false"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "customClassName": true
+    }
+}

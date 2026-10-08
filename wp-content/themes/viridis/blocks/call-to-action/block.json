@@ -1,0 +1,19 @@
+{
+    "apiVersion": 2,
+    "name": "acf/call-to-action",
+    "version": "1.0.0",
+    "title": "Call To Action",
+    "category": "viridis",
+    "icon": "button",
+    "textdomain": "viridis",
+    "acf": {
+        "mode": "edit",
+        "renderCallback": "viridis_call_to_action_block",
+		"validate": "false"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "customClassName": true
+    }
+}

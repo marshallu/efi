@@ -1,0 +1,22 @@
+{#
+/**
+ * Rich Text Block
+ *
+ * @package viridis
+ */
+#}
+
+{% set background = fields.background_color|default('white') %}
+{% set block_class = 'viridis-block--' ~ background %}
+
+<div id="{{ anchor }}" class="{{ block_classes }} {{ block_class }} viridis-rich-text-block">
+	<div class="w-full mx-auto xl:container px-6 py-12 lg:py-24">
+		{% if fields.content %}
+			<div class="rich-text">
+				{{ fields.content }}
+			</div>
+		{% elseif is_preview %}
+			<p class="text-gray-400 italic">Add content in the Rich Text field.</p>
+		{% endif %}
+	</div>
+</div>

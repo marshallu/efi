@@ -1,0 +1,19 @@
+{
+    "apiVersion": 2,
+    "name": "acf/news-and-stories",
+    "version": "1.0.0",
+    "title": "News And Stories",
+    "category": "viridis",
+    "icon": "book",
+    "textdomain": "viridis",
+    "acf": {
+        "mode": "edit",
+        "renderCallback": "viridis_news_and_stories_block",
+		"validate": "false"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "customClassName": true
+    }
+}

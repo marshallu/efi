@@ -1,0 +1,67 @@
+{#
+/**
+ * Basic Block
+ *
+ * @package viridis
+ */
+#}
+
+{% set background = fields.background_color|default('white') %}
+{% set block_class = 'viridis-block--' ~ background %}
+
+<div class="viridis-block {{ block_class }} viridis-basic-content-block">
+	<div class="w-full mx-auto xl:container px-6 py-12 lg:py-24">
+		{% if fields.media_type == 'none' %}
+			<div class="grid grid-cols-1 lg:grid-cols-1 gap-8 lg:gap-20" data-content-side="{{ fields.content_side|default('left') }}">
+		{% else %}
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20" data-content-side="{{ fields.content_side|default('left') }}">
+		{% endif %}
+
+			{% if fields.media_type != 'none' %}
+				<div class="{{ fields.content_side == 'right' ? 'order-1' : 'order-1 md:order-2' }} pl-3 lg:pl-0 lg:pt-7">
+					{% if fields.image %}
+						<div class="relative rounded-xl">
+							<img
+								src="{{ fields.image.url }}"
+								alt="{{ fields.image.alt }}"
+								class="object-contain flex flex-initial relative bottom-3 right-3 lg:bottom-7 lg:right-7 rounded-xl w-full"
+							/>
+						</div>
+					{% elseif fields.youtube_id %}
+						<div class="aspect-video">
+							<iframe
+								src="https://www.youtube.com/embed/{{ fields.youtube_id }}"
+								title="{{ fields.youtube_title }}"
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen
+								class="w-full h-full rounded-xl"
+							></iframe>
+						</div>
+					{% endif %}
+				</div>
+			{% endif %}
+
+			<div class="{{ fields.content_side == 'right' ? 'order-1 md:order-2' : 'order-1' }}">
+				{% include 'components/block-heading.twig' with {
+					preheading: fields.preheading,
+					heading: fields.heading,
+					subheading: fields.subheading
+				} %}
+
+				{% if fields.content %}
+					<div class="mt-4 lg:mt-8 no-img">
+						{{ fields.content }}
+					</div>
+				{% endif %}
+
+				{% include 'components/buttons.twig' with {
+					buttons: fields.buttons,
+					class: 'mt-6 flex flex-col gap-2 lg:gap-6 lg:mt-6 lg:flex-row',
+					button_class_primary: background in ['white', 'gray'] ? 'button--primary' : 'button--primary-dark',
+					button_class_secondary: background in ['white', 'gray'] ? 'button--secondary' : 'button--secondary-dark'
+				} %}
+			</div>
+		</div>
+	</div>
+</div>
